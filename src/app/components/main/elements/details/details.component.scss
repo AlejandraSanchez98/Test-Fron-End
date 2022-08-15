@@ -1,0 +1,27 @@
+.card{
+    background: #eaeaf7;
+    margin:30px
+}
+
+%same-base{
+    font-size: 20px;
+    font-family: "Flexo-Demi",arial,sans-serif;
+    color: #313131;
+}
+
+.title{
+    @extend %same-base;
+    text-align: center;
+}
+
+.name{
+    text-transform: uppercase;
+    @extend %same-base;   
+}
+
+.button{
+    width: 100%;
+    background: #ff9000;
+    color: white;
+}
+

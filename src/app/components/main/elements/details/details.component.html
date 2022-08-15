@@ -1,1 +1,27 @@
-<p>details works!</p>
+<mat-card style="margin: 5%;">
+    <div class="title">
+        <label><b>Detalles Pokémon</b></label>
+    </div>
+    <div class="row">
+        <div class="col-lg-4">
+            <mat-card class="card">
+                <img mat-card-image [src]="imagePokemon">
+            </mat-card>
+        </div>
+        <div class="col.lg-8">
+            <div style="margin: 30px;">
+                <div class="name">
+                    <label><b>{{namePokemon}}</b></label>
+                </div>
+
+                <div>
+                    <p>
+                        <b>Habilidades:</b> 
+                    </p>
+                </div>
+
+                <button mat-flat-button class="button" (click)="chooseAnotherPokemon()">Ver otro Pokémon</button>
+            </div>
+        </div>
+    </div>
+</mat-card>
