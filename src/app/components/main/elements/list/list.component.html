@@ -1,1 +1,18 @@
-<p>list works!</p>
+<div class="row justify-content-center" style="margin-top: 40px;">
+  <mat-card class="col-md-2 card" *ngFor="let pokemon of pokemoArray">
+    <mat-card-content>
+      <div style="margin:40px;">
+        <img mat-card-image src="../../../../../assets/images/imageList.png">
+      </div>
+      
+      <p class="name">
+        <b>{{pokemon.name}}</b>
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-flat-button class="buttonDetails" (click)="getPokemonDetails(pokemon.name)">Más detalles</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+
+  

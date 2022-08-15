@@ -1,0 +1,45 @@
+.card{
+    background: #eaeaf7;
+    margin:30px;
+    width: 200px;
+    height: 200px;
+}
+
+%same-base{
+    font-size: 20px;
+    font-family: "Flexo-Demi",arial,sans-serif;
+    color: #313131;
+}
+
+.title{
+    @extend %same-base;
+    text-align: center;
+}
+
+.name{
+    text-transform: uppercase;
+    @extend %same-base;   
+}
+
+.text{
+    font-size: 16px;
+    font-family: "Flexo-Demi",arial,sans-serif;
+    color: #313131
+}
+
+.button{
+    width: 100%;
+    background: #ff9000;
+    color: white;
+    margin-top: 30px;
+}
+
+.mat-chip.mat-standard-chip {
+    background-color: #28a745;
+    color: white;
+}
+
+
+mat-card:hover  {
+    box-shadow: 0 5px 5px -3px rgba(0,0,0,.2), 0 8px 10px 1px rgba(0,0,0,.14), 0 3px 14px 2px rgba(0,0,0,.12);
+}
