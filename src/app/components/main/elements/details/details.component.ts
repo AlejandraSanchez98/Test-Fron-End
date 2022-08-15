@@ -11,11 +11,13 @@ import { Router } from '@angular/router';
 })
 export class DetailsComponent implements OnInit {
 
-  public imagePokemon: string;
-  public namePokemon: string;
+  public pokemonImage: string;
+  public pokemonName: string;
+  public pokemonAbilityArray:any[];
   constructor(private ApiPokemon:ApiPokemonService, private route:ActivatedRoute, private router: Router) { 
-    this.imagePokemon = "";
-    this.namePokemon = "";
+    this.pokemonImage = "";
+    this.pokemonName = "";
+    this.pokemonAbilityArray = [];
   }
 
 
@@ -23,18 +25,41 @@ export class DetailsComponent implements OnInit {
   * @description: We consume the web service to get the name of the Pokémon and store the result in an array of objects.
   * @author: Alejandra Sanchez - 2022/08/13
   */
-   public getImagePokemon(): void {
+   public getPokemonImage(): void {
+    let pokemonName: string;
+    //get name from URL parameters
+    this.route.queryParams.subscribe((params)=>{
+      pokemonName = params['name'];
+
+      this.ApiPokemon.getPokemonImageWs(pokemonName).subscribe({
+        next: (success:any) => {
+        console.log("success imagen",success.sprites.front_default);  
+        this.pokemonName = pokemonName;
+        this.pokemonImage = success.sprites.front_default;
+        console.log("imagePokemon", this.pokemonImage);
+      },
+        error: (error) => { 
+          console.error(error)
+        }
+      });
+    });    
+  }
+
+
+  /**
+  * @description: We consume the web service to get the name of the Pokémon and store the result in an array of objects.
+  * @author: Alejandra Sanchez - 2022/08/13
+  */
+   public getPokemonAbility(): void {
     let namePokemon: string;
     //get name from URL parameters
     this.route.queryParams.subscribe((params)=>{
       namePokemon = params['name'];
 
-      this.ApiPokemon.getImagePokemon(namePokemon).subscribe({
+      this.ApiPokemon.getPokemonAbilityWs(namePokemon).subscribe({
         next: (success:any) => {
-        console.log("success imagen",success.sprites.front_default);  
-        this.namePokemon = namePokemon;
-        this.imagePokemon = success.sprites.front_default;
-        console.log("imagePokemon", this.imagePokemon);
+        console.log("success habilidad",success.abilities);  
+        this.pokemonAbilityArray = success.abilities;
       },
         error: (error) => { 
           console.error(error)
@@ -53,7 +78,8 @@ export class DetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getImagePokemon();
+    this.getPokemonImage();
+    this.getPokemonAbility();
   }
 
 }

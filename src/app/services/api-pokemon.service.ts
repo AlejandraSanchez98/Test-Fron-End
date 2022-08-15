@@ -21,8 +21,8 @@ export class ApiPokemonService {
   * @description: get web service pokémon name
   * @author: Alejandra Sanchez - 2022/08/13
   */
-  public getNamePokemon():Observable<Object> {
-    return this.http.get(`${environment.host}/api/v2/pokemon?offset=60&limit=60`, { headers: this.headers });
+  public getPokemonNameWs():Observable<Object> {
+    return this.http.get(`${environment.host}/api/v2/pokemon?offset=100&limit=100`, { headers: this.headers });
   }
 
 
@@ -30,8 +30,17 @@ export class ApiPokemonService {
   * @description: get web service pokémon image
   * @author: Alejandra Sanchez - 2022/08/13
   */
-  public getImagePokemon(name:string) {
+  public getPokemonImageWs(name:string) {
     return this.http.get(`${environment.host}/api/v2/pokemon-form/${name}`, {headers: this.headers});
+  }
+
+
+  /**
+  * @description: get web service pokémon ability
+  * @author: Alejandra Sanchez - 2022/08/13
+  */
+   public getPokemonAbilityWs(name:string) {
+    return this.http.get(`${environment.host}/api/v2/pokemon/${name}`, {headers: this.headers});
   }
 
 }

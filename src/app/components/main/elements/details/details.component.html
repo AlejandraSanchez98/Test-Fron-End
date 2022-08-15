@@ -1,23 +1,24 @@
-<mat-card style="margin: 5%;">
+<mat-card style="margin: 10%;">
     <div class="title">
         <label><b>Detalles Pokémon</b></label>
     </div>
     <div class="row">
-        <div class="col-lg-4">
+        <div class="col-md-4">
             <mat-card class="card">
-                <img mat-card-image [src]="imagePokemon">
+                <img mat-card-image [src]="pokemonImage">
             </mat-card>
         </div>
-        <div class="col.lg-8">
+        <div class="col-md-8">
             <div style="margin: 30px;">
                 <div class="name">
-                    <label><b>{{namePokemon}}</b></label>
+                    <label><b>{{pokemonName}}</b></label>
                 </div>
 
-                <div>
-                    <p>
-                        <b>Habilidades:</b> 
-                    </p>
+                <div style="margin-top: 20px">
+                    <label class="text"><b>Habilidades:</b></label>
+                    <mat-chip-list cdkDropList cdkDropListOrientation="horizontal">
+                        <mat-chip  cdkDrag *ngFor="let ability of pokemonAbilityArray"> {{ability.ability.name}}</mat-chip>
+                    </mat-chip-list>
                 </div>
 
                 <button mat-flat-button class="button" (click)="chooseAnotherPokemon()">Ver otro Pokémon</button>

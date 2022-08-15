@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiPokemonService } from "../../../../services/api-pokemon.service";
-import { IPokemon } from "../../../../models/pokemon";
 import { Router } from '@angular/router';
 
 @Component({
@@ -19,8 +18,8 @@ export class ListComponent implements OnInit {
   * @description: We consume the web service to get the name of the Pokémon and store the result in an array of objects.
   * @author: Alejandra Sanchez - 2022/08/13
   */
-   public getNamePokemon(): void{
-    this.ApiPokemon.getNamePokemon().subscribe({
+   public getPokemonName(): void{
+    this.ApiPokemon.getPokemonNameWs().subscribe({
       next: (success:any) => {
       console.log("success",success);  
       this.pokemoArray = success.results;
@@ -37,7 +36,7 @@ export class ListComponent implements OnInit {
   * @description: Show details of the Pokémon
   * @author: Alejandra Sanchez - 2022/08/13
   */
-  public detailsPokemon(name:string):void {
+  public getPokemonDetails(name:string):void {
     this.router.navigate(['/details'], {queryParams:{name:name}});
   }
 
@@ -45,6 +44,6 @@ export class ListComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.getNamePokemon();
+    this.getPokemonName();
   }
 }
